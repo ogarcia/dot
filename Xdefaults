@@ -1,0 +1,55 @@
+! Xdefaults
+! ---------
+! (c) 2006-2010  Connectical Labs.
+! Andrés J. Díaz, Adrián Pérez de Castro, Óscar García Amor
+
+XTerm.zIconBeep: 1
+XTerm.termName: xterm-color
+XTerm.VT100.background: black
+XTerm.VT100.foreground: grey
+XTerm.VT100.cursorColor: chartreuse
+XTerm.VT100.loginShell: 1
+XTerm.VT100.dynamicColors: true
+XTerm.VT100.saveLines: 2000
+XTerm.VT100.geometry: 80x40
+XTerm.VT100.rightScrollBar: 1
+XTerm.VT100.scrollBar: 1
+XTerm.VT100.scrollKey: true
+XTerm.VT100.scrollTtyOutput: false
+XTerm.VT100.font: -*-lucidatypewriter-medium-*-*-sans-12-*-iso10646-1
+XTerm.VT100.sessionMgt: true
+
+UXTerm.zIconBeep: 1
+UXTerm.termName: xterm-color
+UXTerm.VT100.background: black
+UXTerm.VT100.foreground: grey
+UXTerm.VT100.cursorColor: chartreuse
+UXTerm.VT100.loginShell: 1
+UXTerm.VT100.saveLines: 2000
+UXTerm.VT100.geometry: 80x40
+UXTerm.VT100.dynamicColors: true
+UXTerm.VT100.rightScrollBar: 1
+UXTerm.VT100.scrollBar: 1
+UXTerm.VT100.scrollKey: true
+UXTerm.VT100.scrollTtyOutput: false
+UXTerm.VT100.font: -*-lucidatypewriter-medium-*-*-sans-12-*-iso10646-1
+! UXTerm.VT100.utf8Fonts.font: *-unifont-*
+UXTerm.VT100.utf8Fonts.font: -*-lucidatypewriter-medium-*-*-sans-12-*-iso10646-1
+! UXTerm.VT100.utf8Fonts.font: -*-bitstream vera sans mono-medium-r-*-*-13-*-*-*-*-*-iso10646-1
+UXTerm.VT100.sessionMgt: true
+
+
+! [multi-]aterm stuff
+
+materm.geometry: 80x40
+materm.foreground: grey
+materm.background: black
+XTerm.LoginShell: true
+XTerm.Scrollbar: true
+XTerm.ScrollbarRight: true
+XTerm.ScrollbarTtyOutput: false
+XTerm.ScrollbarTtyKeypress: true
+XTerm.Vt.SaveLines: 2000
+XTerm.Fading: 70%
+
+! vim:ft=xdefaults
