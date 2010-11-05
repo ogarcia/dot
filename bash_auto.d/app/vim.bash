@@ -9,7 +9,7 @@ export EDITOR="$(which vim)"
 
 if installed vimpager
 then
-	MANPAGER="col -b | vimpager -c 'set ft=man nolist' -"
+	MANPAGER="vimmanpager"
 	PAGER="$(which vimpager)"
 	export MANPAGER
 	export PAGER

@@ -1,6 +1,6 @@
 # bash_auto
 # ---------
-# (c) 2006-2009  Connectical Labs.
+# (c) 2006-2010  Connectical Labs.
 # Andrés J. Díaz, Adrián Pérez de Castro, Óscar García Amor
 #
 # This file is sourced by all *interactive* bash shells on startup,
@@ -17,7 +17,7 @@
 auto_dir=${BASH_AUTODIR:-~/.bash_auto.d}
 
 # This bash_auto only works with bash >= 3.0
-[ "${BASH_VERSION:-0}" '<' "3" ] && return
+[ "${BASH_VERSION:-0}" '<' "3" ] && return 1
 
 # If not exists the directory autoload, then do nothing.
 [ ! -d "$auto_dir" ] && return
@@ -38,8 +38,8 @@ prompt=
 # exported.
 OS="$( uname )"
 LINUX="$(  cat /etc/*-release 2>/dev/null )"
-HOST="$( hostname    2>/dev/null )"
-USER="$( id -un )"
+HOST="${HOSTNAME}"
+USER="${LOGNAME}"
 FROM="${SSH_CLIENT%% *}"
 
 shopt -s extglob
@@ -47,7 +47,7 @@ shopt -s extglob
 # The ``for`` is muted (redirected to ``/dev/null``) to prevent
 # unusefull errors if directory does not exists. I consider ugly
 # practice to save this messages.
-for in_script in $(find "$auto_dir/" -type f -name "*.bash")
+for in_script in $(find "$auto_dir/" -iname "*.bash")
 do
 
 	# Mute verbose output in no-interactive shells
@@ -63,9 +63,11 @@ do
 	if [[ "$in_script" == */prompt.bash ]]
 	then
 		PS1="$prompt"
-		PROMPT_COMMAND="[ -r $auto_dir/*/prompt.bash ] \
-			&& source $auto_dir/*/prompt.bash \
-			&& PS1=\"\$prompt\""
+#		PROMPT_COMMAND="[ -r $auto_dir/*/prompt.bash ] \
+#			&& source $auto_dir/*/prompt.bash \
+#			&& PS1=\"\$prompt\""
+		PS1="$prompt"
+		PROMPT_COMMAND="prompt_build && PS1=\"\$prompt\""
 	fi
 
 

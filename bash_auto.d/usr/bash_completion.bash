@@ -5,9 +5,10 @@
 	. /etc/bash_completion
 
 if [ -d ~/.bash_completion.d/ ]; then
-	for mod in ~/.bash_completion.d/* ; do
-		. $mod
+	for mod in $(ls -c1 ~/.bash_completion.d/) ; do
+		. ~/.bash_completion.d/$mod
 	done
 fi
 
 # -- end -- vim:ft=sh:
+
