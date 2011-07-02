@@ -37,7 +37,7 @@
 	redo = commit --amend
 
 [user]
-	name = Óscar García Amor
+	name = Óscar García Amor
 	email = ogarcia@connectical.com
 
 [sendemail]
