@@ -7,6 +7,9 @@ if ! installed git; then
 	return 0
 fi
 
+[ -r "/usr/local/git/contrib/completion/git-completion.bash" ] && \
+	. /usr/local/git/contrib/completion/git-completion.bash
+
 git_get_branch_name ()
 {
   local branch=$(git symbolic-ref HEAD 2> /dev/null \
