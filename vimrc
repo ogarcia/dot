@@ -1,8 +1,9 @@
 ".vimrc
 " ---------------------------------------------------------------------
-" Copyright (c) 2006 Andrés J. Díaz <ajdiaz@connectical.com>
-" Copyright (c) 2008 Adrian Perez <aperez@connectical.com>
-" Copyright (c) 2010 Óscar García Amor <ogarcia@connectical.com>
+" Copyright (c) 2006-2011  Connectical Labs.
+" Andrés J. Díaz <ajdiaz@connectical.com>
+" Adrian Perez <aperez@connectical.com>
+" Óscar García Amor <ogarcia@connectical.com>
 "
 " Permission is hereby granted, free of charge, to any person
 " obtaining a copy of this software and associated documentation
