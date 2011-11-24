@@ -2,14 +2,6 @@
 
 options_grep="${options_grep} --color=auto"
 
-[ "${OS}" = "Darwin" ] && case ${TERM} in
-	*-color | xterm | linux )
-		export CLICOLOR=1
-		alias grep="grep ${options_grep}"
-		return 0
-	;;
-esac
-
 if ! installed dircolors
 then return 0
 else
