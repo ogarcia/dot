@@ -12,7 +12,7 @@ in_mprompt="    ?ltLine %lt-%lb ?pt(%pt\%).:?btByte..     [?f%f:*stdin*.] ?m(%i-
 export LESS="-J -K -M -x4 -PM[1;34;43m$in_mprompt[0;0m"
 
 # SuSE doesn't support "raw" control characters.
-[ ! -e "/etc/SuSE-release" ] && export LESS="-r $LESS"
+{ [ -e "/etc/SuSE-release" ] && export LESS="-R $LESS"; } || export LESS="-r $LESS"
 
 # By default use less(1) in raw mode (allow color codes
 # and more).
