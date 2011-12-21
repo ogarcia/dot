@@ -58,7 +58,7 @@ endfunction
 "
 function <SID>TFind(path, name, up)
 	let l:tmpl = <SID>TSearch(a:path, "=" . a:name, a:up)
-	let l:path = exists("g:template_dir") ? g:template_dir : "~/.vim-template.d"
+	let l:path = exists("g:template_dir") ? g:template_dir : "~/.vim/templates"
 	if l:tmpl != ""
 		return l:tmpl
 	else
