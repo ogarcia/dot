@@ -1,6 +1,6 @@
 # bash_auto
 # ---------
-# (c) 2006-2011  Connectical Labs.
+# (c) 2006-2008  Connectical Labs.
 # Andrés J. Díaz, Adrián Pérez de Castro, Óscar García Amor
 #
 # This file is sourced by all *interactive* bash shells on startup,
@@ -36,52 +36,26 @@ prompt=
 
 # Set special variables to autoload plugins. This variables must not be
 # exported.
-OS="$( uname )"
-LINUX="$(  cat /etc/*-release 2>/dev/null )"
+OS="$(uname)"
+LINUX="$(cat /etc/*-{release,version} 2>/dev/null)"
 HOST="${HOSTNAME}"
 USER="${LOGNAME}"
 FROM="${SSH_CLIENT%% *}"
 
 shopt -s extglob
 
+# We also export ``PS1`` and ``PROMPT_COMMAND`` variables to environment.
+# It's very usefull when run a subshell interactively.
+export PS1="[no prompt]$ "
+
+
 # The ``for`` is muted (redirected to ``/dev/null``) to prevent
 # unusefull errors if directory does not exists. I consider ugly
 # practice to save this messages.
-for in_script in $(find "$auto_dir/" -iname "*.bash")
-do
-
-	# Mute verbose output in no-interactive shells
-	if ${interactive:-false}
-	then
-		source $in_script
-	else
-		source $in_script 2>&1 >/dev/null
-	fi
-
-	# If exist prompt file, then set according value in PS1 and using
-	# ``PROMPT_COMMAND`` to reset value
-	if [[ "$in_script" == */prompt.bash ]]
-	then
-		PS1="$prompt"
-		PROMPT_COMMAND="prompt_build && PS1=\"\$prompt\""
-	fi
-
-
-done
-
-
-# We also export ``PS1`` and ``PROMPT_COMMAND`` variables to environment.
-# It's very usefull when run a subshell interactively.
-export PS1="${PS1:-\$}"
-export PROMPT_COMMAND
+for src in ${auto_dir}/**/*.bash; do mute source $src; done
 
 # Free all *in*ternal variables at this moment. It's postcondition. At
 # this point none variable must be used by bash_auto
-unset prompt
-for in_var in ${!in_*} ${!options_*}
-do
-	unset $in_var
-done
-unset in_var
+unset OS LINUX HOST USER FROM src ${!in_*} ${!options_*}
 
 # -- end --
