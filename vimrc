@@ -1,6 +1,6 @@
 ".vimrc
 " ---------------------------------------------------------------------
-" Copyright (c) 2006-2011  Connectical Labs.
+" Copyright (c) 2006-2013  Connectical Labs.
 " Andrés J. Díaz <ajdiaz@connectical.com>
 " Adrian Perez <aperez@connectical.com>
 " Óscar García Amor <ogarcia@connectical.com>

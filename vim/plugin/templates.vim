@@ -1,7 +1,8 @@
 "
 " Template system for Vim
 "
-" Copyright (C) 2005 Adrian Perez de Castro <the.lightman@gmail.com>
+" Copyright (c) 2013 Connectical Labs.
+" Adrián Pérez de Castro, Andrés J. Díaz, Óscar García Amor
 "
 " Distributed under terms of the MIT license.
 "
