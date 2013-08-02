@@ -5,3 +5,6 @@
 :Date: %FDATE%
 
 %HERE%
+
+
+.. vim: expandtab filetype=rst shiftwidth=4 tabstop=4

@@ -53,14 +53,16 @@ set formatoptions+=cqron1		" Some useful formatting options
 set showmatch					" Show matching parens
 set textwidth=76				" Text is 76 columns wide
 set backspace=2					" Backspace always useable in insert mode
-set fileformats=unix,mac,dos	" Allows automatic line-end detection.
-set grepprg=grep\ -nH\ $*		" Make grep always print the file name.
-set ignorecase
-set infercase
-set lazyredraw
-set hidden
-set diffopt+=iwhite
-set nobackup
+set fileformats=unix,mac,dos	" Allows automatic line-end detection
+set grepprg=grep\ -nH\ $*		" Make grep always print the file name
+set ignorecase					" Ignore case in a pattern
+set infercase					" Adjust case in keyword completion
+set lazyredraw					" No screen redraw while executing macros
+set hidden						" Hide buffer instead unload when abandon
+set diffopt+=iwhite				" In vim diff ignore changes in amount of white spaces
+set nobackup					" Don't fuck with stupid backup files
+set modeline					" Enable config-in-a-file
+set modelines=5					" Number of lines to check for a config-in-a-file
 
 
 if has("cscope")
