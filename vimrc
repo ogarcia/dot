@@ -534,7 +534,7 @@ map  <C-S-Right> <ESC>:bnext<CR>
 map <silent> <F9>  :previous!<CR>
 map <silent> <F10> :next!<CR>
 
-"inoremap <silent> <F11> :call VimCommanderToggle()<CR>
+nnoremap <silent> <F11> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
 
 " F12 -> Save all and exit
 map  <F12>  :xa!<CR>
