@@ -1,5 +1,5 @@
 # This file is sourced by .bashrc. This script provides a
-# pretty prompt
+# pretty prompt.
 #
 # HOW THIS FILE RUN
 # -----------------
@@ -62,12 +62,13 @@
 # }
 # prompt_hook_git=git_set_branch_in_prompt
 
-prompt="\[\e[32;1m\]<\u@\h> \[\e[34;1m\][\w]\\$\[\e[0m\] "
+window="${WINDOW:+:\[\e[37;1m\]${WINDOW}\[\e[32;1m\]}"
+prompt="\[\e[32;1m\]<\u@\h${window}> \[\e[34;1m\][\w]\\$\[\e[0m\] "
 
 # Prompt showed in directories which they are not writeable by current user
 # (the working dir must be displayed in lighting red)
 prompt_hook_norw () {
-	[ ! -w . ] && prompt="\[\e[32;1m\]<\u@\h> \[\e[31;1m\][\w]\\$\[\e[0m\] "
+	[ ! -w . ] && prompt="\[\e[32;1m\]<\u@\h${window}> \[\e[31;1m\][\w]\\$\[\e[0m\] "
 }
 prompt_hook_norw=prompt_hook_norw
 
@@ -78,7 +79,7 @@ if [ -r /proc/loadavg -a -d /sys/devices/system/cpu/ ] ; then
 	local cur_avg="$(cut -d'.' -f1 /proc/loadavg)"
 	local max_avg="$(find /sys/devices/system/cpu/ -name "cpu[0-9]*" | wc -l)"
 	[ ${cur_avg:-0} -ge ${max_avg:-0} ] && \
-	prompt="\[\e[31;1m\]<\u@\h> [\w]\\$\[\e[0m\] "
+	prompt="\[\e[31;1m\]<\u@\h${window}> [\w]\\$\[\e[0m\] "
 fi
 }
 prompt_hook_loadavg=prompt_hook_loadavg
@@ -86,7 +87,7 @@ prompt_hook_loadavg=prompt_hook_loadavg
 # Prompt when UID is 0, that is we are root. In this case like a gentoo
 # prompt style.
 prompt_hook_rootuid () {
-[ $UID -eq 0 ] && prompt="\[\e[31;1m\]\h\[\e[34;1m\] \W \\$\[\e[0m\] "
+[ $UID -eq 0 ] && prompt="\[\e[31;1m\]\h${window}\[\e[34;1m\] \W \\$\[\e[0m\] "
 }
 prompt_hook_rootuid=prompt_hook_rootuid
 
@@ -104,10 +105,14 @@ prompt_hook_titlebar=prompt_hook_titlebar
 prompt_build ()
 {
 	# Handle hooks if present.
-	prompt="\[\e[32;1m\]<\u@\h> \[\e[34;1m\][\w]\\$\[\e[0m\] "
+	window="${WINDOW:+:\[\e[37;1m\]${WINDOW}\[\e[32;1m\]}"
+	prompt="\[\e[32;1m\]<\u@\h${window}> \[\e[34;1m\][\w]\\$\[\e[0m\] "
 	for hook in ${!prompt_hook*}; do
-		${!hook} 2>/dev/null >/dev/null
+		${!hook} 2>&1 >/dev/null
 	done; true
+	export PS1="$prompt"; unset prompt window
 }
+
+PROMPT_COMMAND="prompt_build"
 
 # -- end -- vim:ft=sh:
