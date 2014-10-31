@@ -1,4 +1,5 @@
-# This file contains a set of UID 0 commodities
+# This file is sourced by .bashrc. This script contains
+# a set of UID 0 commodities.
 
 [ $UID -eq 0 ] || return
 
@@ -32,4 +33,4 @@ ban ()
 	done
 }
 
-# vim:ft=sh:
+# -- end -- vim:ft=sh:

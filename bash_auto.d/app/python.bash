@@ -17,3 +17,4 @@ python_set_venv_in_prompt ()
 }
 prompt_hook_python=python_set_venv_in_prompt
 
+# -- end -- vim:ft=sh:

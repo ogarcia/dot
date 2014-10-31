@@ -11,4 +11,3 @@ if [ -d ~/.bash_completion.d/ ]; then
 fi
 
 # -- end -- vim:ft=sh:
-

@@ -22,3 +22,4 @@ git_set_branch_in_prompt ()
 }
 prompt_hook_git=git_set_branch_in_prompt
 
+# -- end -- vim:ft=sh:

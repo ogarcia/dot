@@ -1,4 +1,5 @@
-# This file contains a set of RPM commodities
+# This file is sourced by .bashrc. This script contains
+# a set of RPM commodities.
 
 if ! installed rpm; then
 	return 0
@@ -13,4 +14,4 @@ alias qall="rpm -qa --queryformat '%{installtime:day} - %{name} - %{size}\n'"
 alias qfile="rpm -qf"
 alias qlast="rpm -qa --last '%{installtime:day} - %{name} - %{size}\n'"
 
-# vim:ft=sh:
+# -- end -- vim:ft=sh:

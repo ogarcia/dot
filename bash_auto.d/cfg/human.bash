@@ -1,4 +1,5 @@
-# This file contains a set of human-legible wrappers
+# This file is sourced by .bashrc. This script contains
+# a set of human-legible wrappers.
 
 options_du="${options_du} -h"
 options_ls="${options_ls} -h"
@@ -8,4 +9,4 @@ alias du="du ${options_du}"
 alias ls="ls ${options_ls}"
 alias df="df ${options_df}"
 
-# vim:ft=sh:
+# -- end -- vim:ft=sh:

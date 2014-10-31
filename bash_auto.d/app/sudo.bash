@@ -1,5 +1,5 @@
-# This file contains a set of commodities to use with
-# program sudo(1).
+# This file is sourced by .bashrc. This script contains
+# a set of commodities to use with program sudo(1).
 
 # If sudo(1) no installed into PATH then skip the content
 # of this file and continue loading other bash_autoload.d
@@ -24,4 +24,4 @@ sudo () {
  	return $ret
 }
 
-# vim:ft=sh:
+# -- end -- vim:ft=sh:

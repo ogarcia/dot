@@ -1,4 +1,5 @@
-# This file contains a set of DPKG commodities
+# This file is sourced by .bashrc. This script contains
+# a set of DPKG commodities.
 
 if ! installed dpkg; then
 	return 0
@@ -8,4 +9,4 @@ fi
 alias qlist="dpkg -l"
 alias qfile="dpkg -L"
 
-# vim:ft=sh:
+# -- end -- vim:ft=sh:
