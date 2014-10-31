@@ -55,6 +55,9 @@ NeoBundle 'Shougo/unite.vim',
 	\ {'name' : 'vim-unite'}
 call neobundle#end()
 
+" Plugin: Airline
+let g:airline#extensions#tabline#enabled=1
+
 set tabstop=2                 " Set tabstops to 2 spaces
 set smarttab                  " Use smart tabs... we are not as dumb!
 set shiftwidth=2              " Set indentation shift-width to 2 spaces

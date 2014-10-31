@@ -1,3 +1,17 @@
+[alias]
+	co   = commit -a
+	a    = add
+	di   = diff
+	dic  = diff --cached
+	pl   = pull
+	ps   = push
+	plre = pull --rebase
+	st   = status
+	out  = log origin..HEAD
+	rlog = reflog
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	redo = commit --amend
+
 [color]
 	ui = auto
 
@@ -22,23 +36,11 @@
 	excludefile = ~/.gitignore
 	whitespace = fix, -indent-with-non-tab,trailing-space,cr-at-eol
 
-[alias]
-	co   = commit -a
-	a    = add
-	di   = diff
-	dic  = diff --cached
-	pl   = pull
-	ps   = push
-	plre = pull --rebase
-	st   = status
-	out  = log origin..HEAD
-	rlog = reflog
-	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	redo = commit --amend
+[merge]
+	tool = vimdiff
 
-[user]
-	name = Óscar García Amor
-	email = ogarcia@connectical.com
+[push]
+	default = simple
 
 [sendemail]
 	smtpencryption = tls
@@ -47,8 +49,6 @@
 	smtpserverport = 587
 	chainreplyto = false
 
-[merge]
-	tool = vimdiff
-
-[push]
-	default = simple
+[user]
+	name = Óscar García Amor
+	email = ogarcia@connectical.com
