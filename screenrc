@@ -13,4 +13,3 @@ vbell_msg " *beep* "
 startup_message off
 
 defscrollback 500
-

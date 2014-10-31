@@ -1,6 +1,6 @@
 # bash_auto
 # ---------
-# (c) 2006-2010  Connectical Labs.
+# (c) 2006-2014  Connectical
 # Andrés J. Díaz, Adrián Pérez de Castro, Óscar García Amor
 #
 # This file is sourced by all *interactive* bash shells on startup,

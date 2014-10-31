@@ -1,4 +1,5 @@
-# This file contains a set of color-improved aliases
+# This file is sourced by .bashrc. This script contains
+# a set of color-improved aliases.
 
 options_grep="${options_grep} --color=auto"
 
@@ -21,4 +22,4 @@ options_ls="${options_ls} --color=auto"
 alias ls="ls ${options_ls}"
 alias grep="grep ${options_grep}"
 
-# vim:ft=sh:
+# -- end -- vim:ft=sh:

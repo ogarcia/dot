@@ -1,7 +1,5 @@
 # This file is sourced by .bashrc. This script provide a suite
-# of git(1) specified utils. This file was contributed by
-# Adrian Perez <aperez at connectical.com>
-# Oscar Garcia <ogarcia at connectical.com>
+# of git(1) specified utils.
 
 if ! installed git; then
 	return 0
@@ -24,3 +22,4 @@ git_set_branch_in_prompt ()
 }
 prompt_hook_git=git_set_branch_in_prompt
 
+# -- end -- vim:ft=sh:

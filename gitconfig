@@ -1,3 +1,17 @@
+[alias]
+	co   = commit -a
+	a    = add
+	di   = diff
+	dic  = diff --cached
+	pl   = pull
+	ps   = push
+	plre = pull --rebase
+	st   = status
+	out  = log origin..HEAD
+	rlog = reflog
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	redo = commit --amend
+
 [color]
 	ui = auto
 
@@ -23,23 +37,24 @@
 	whitespace = fix, -indent-with-non-tab,trailing-space,cr-at-eol
 	autocrlf = input
 
-[alias]
-	co   = commit -a
-	a    = add
-	di   = diff
-	dic  = diff --cached
-	pl   = pull
-	ps   = push
-	plre = pull --rebase
-	st   = status
-	out  = log origin..HEAD
-	rlog = reflog
-	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	redo = commit --amend
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
 
-[user]
-	name = Óscar García Amor
-	email = ogarcia@connectical.com
+[filter "media"]
+	clean = git media clean %f
+	smudge = git media smudge %f
+	required = true
+
+[merge]
+	tool = vimdiff
+
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
+[push]
+	default = simple
 
 [sendemail]
 	smtpencryption = tls
@@ -48,17 +63,6 @@
 	smtpserverport = 587
 	chainreplyto = false
 
-[merge]
-	tool = vimdiff
-
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[filter "media"]
-	clean = git media clean %f
-	smudge = git media smudge %f
-	required = true
+[user]
+	name = Óscar García Amor
+	email = ogarcia@connectical.com

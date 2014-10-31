@@ -1,7 +1,3 @@
-# =========================
-# ~/.bash_autoload.d/prompt
-# =========================
-#
 # This file is sourced by .bashrc. This script provides a
 # pretty prompt
 #
@@ -114,4 +110,4 @@ prompt_build ()
 	done; true
 }
 
-# vim:ft=sh:
+# -- end -- vim:ft=sh:

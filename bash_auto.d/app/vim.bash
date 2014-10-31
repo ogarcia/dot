@@ -1,5 +1,5 @@
-# This file is sourced by .bashrc. This script provide a compatibility
-# with vim(1) editor.
+# This file is sourced by .bashrc. This script provide
+# a compatibility with vim(1) editor.
 
 if ! installed vim
 then return 0

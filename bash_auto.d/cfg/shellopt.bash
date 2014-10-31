@@ -1,4 +1,5 @@
-# This file contains a set of shell options usually disabled
+# This file is sourced by .bashrc. This script contains
+# a set of shell options usually disabled.
 
 shopt -s cdspell checkhash histappend cmdhist histverify nocaseglob
 shopt -s no_empty_cmd_completion shift_verbose checkwinsize
@@ -9,4 +10,4 @@ HISTCONTROL="ignoreboth"
 HISTSIZE="1000"
 HISTTIMEFORMAT="%F %T "
 
-# vim:ft=sh:
+# -- end -- vim:ft=sh:
