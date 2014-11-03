@@ -1,5 +1,5 @@
 # This file is sourced by .bashrc. This script configures
-# some X terminals to have full color support.
+# some terminals to have full color support.
 
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
 	case "$TERM" in
