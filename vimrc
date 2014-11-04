@@ -97,11 +97,13 @@ set shortmess+=a
 set noshowmode
 set grepprg=ag\ --noheading\ --nocolor\ --nobreak
 set secure
-set exrc
 set undofile                  " Save undo's after file closes
 set undodir=$HOME/.vim/undo   " where to save undo histories
 set undolevels=1000           " How many undos
 set undoreload=10000          " number of lines to save for undo
+
+" Load a .vimrc from any directory (commented by default)
+"set exrc
 
 if has("mouse")
 	if has("mouse_sgr")
