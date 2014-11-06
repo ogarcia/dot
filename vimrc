@@ -44,15 +44,17 @@ endif
 
 " Load plugins with NeoBundle
 call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'aperezdc/vim-template'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'tpope/vim-fugitive'
+NeoBundleFetch 'Shougo/neobundle.vim'    " Next generation Vim package manager
+NeoBundle 'aperezdc/vim-template'        " Set of templates for certain file types
+NeoBundle 'bling/vim-airline'            " Superpowers for status/tabline
+NeoBundle 'airblade/vim-gitgutter'       " Shows a git diff in the gutter (sign column)
+NeoBundle 'tpope/vim-fugitive'           " The best git wrapper of all time
 NeoBundle 'bkad/CamelCaseMotion',
-	\ {'name' : 'vim-camelcasemotion'}
+	\ {'name' : 'vim-camelcasemotion'}   " Provide CamelCase motion through words
 NeoBundle 'Shougo/unite.vim',
-	\ {'name' : 'vim-unite'}
+	\ {'name' : 'vim-unite'}             " Search and display information from arbitrary sources
+NeoBundle 'godlygeek/tabular',
+	\ {'name' : 'vim-tabular'}           " Text filtering and alignment
 call neobundle#end()
 
 " Plugin: Airline
