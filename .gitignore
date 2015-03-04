@@ -1,0 +1,9 @@
+# Ignore single file backups
+*~
+
+# GnuPG stuff
+gnupg/*.gpg
+gnupg/.\#*
+
+# Vim stuff
+vim/.netrwhist
