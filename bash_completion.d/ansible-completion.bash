@@ -35,13 +35,14 @@ _ansible_complete_host() {
             '/^inventory/{ print $3 }' /etc/ansible/ansible.cfg)
         [ -f ${HOME}/.ansible.cfg ] && inventory_file=$(awk \
             '/^inventory/{ print $3 }' ${HOME}/.ansible.cfg)
-        [ -f ansible.cfg ] && inventory_file=$(awk '/^inventory/{ print $3 }' ansible.cfg)
+        [ -f ansible.cfg ] && inventory_file=$(awk \
+            '/^(hostfile|inventory)/{ print $3 }' ansible.cfg)
     fi
     # if inventory_file points to a directory, search recursively
     [ -d "$inventory_file" ] && grep_opts="$grep_opts -hR"
     local hosts=$(ansible ${inventory_file:+-i "$inventory_file"} all --list-hosts 2>&1 \
         && [ -e "$inventory_file" ] \
-        && [ ! -x "$inventory_file" ] \
+        && [ -d "$inventory_file" -o ! -x "$inventory_file" ] \
         && grep $grep_opts '\[.*\]' "$inventory_file" | tr -d [] | cut -d: -f1)
 
     # list the hostnames with ansible command line and complete the list
@@ -49,7 +50,6 @@ _ansible_complete_host() {
     hosts="$hosts
     $(echo "$hosts" | sed -e 's/\([^[:space:]]\)/\&\1/p' -e 's/&/!/p' )"
     # add the !, & notation to the hostname
-
 
     if [ "$first_words" != "$last_word" ]; then
         COMPREPLY=( $( compgen -P "$first_words:" -W "$hosts" -- "$last_word" ) )
