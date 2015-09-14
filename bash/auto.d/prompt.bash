@@ -77,7 +77,7 @@ prompt_hook_norw=prompt_hook_norw
 prompt_hook_loadavg () {
 if [ -r /proc/loadavg -a -d /sys/devices/system/cpu/ ] ; then
 	local cur_avg="$(cut -d'.' -f1 /proc/loadavg)"
-	local max_avg="$(find /sys/devices/system/cpu/ -name "cpu[0-9]*" | wc -l)"
+	local max_avg="$(find /sys/devices/system/cpu/ -name "cpu[0-9]*" 2>/dev/null | wc -l)"
 	[ ${cur_avg:-0} -ge ${max_avg:-0} ] && \
 	prompt="\[\e[31;1m\]<\u@\h${window}> [\w]\\$\[\e[0m\] "
 fi
