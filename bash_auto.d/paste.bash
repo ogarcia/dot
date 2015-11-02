@@ -7,8 +7,8 @@ fi
 
 nnpaste () {
 	a=$(cat)
-	curl -X POST -s -d "$a" http://pastein.connectical.com/documents | \
-	  awk -F '"' '{print "http://pastein.connectical.com/"$4}'
+	curl -X POST -s -d "$a" https://pastein.connectical.com/documents | \
+	  awk -F '"' '{print "https://pastein.connectical.com/"$4}'
 }
 
 haste () {
