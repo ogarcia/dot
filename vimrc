@@ -62,6 +62,7 @@ let g:airline#extensions#tabline#enabled=1
 
 set tabstop=2                 " Set tabstops to 2 spaces
 set smarttab                  " Use smart tabs... we are not as dumb!
+set expandtab                 " Always uses spaces instead of tab characters
 set shiftwidth=2              " Set indentation shift-width to 2 spaces
 set autoindent                " Enable automatic indentation
 set copyindent                " Enable automatic indentation of pasted lines
@@ -138,7 +139,7 @@ if has("autocmd")
 	autocmd FileType javascript setlocal expandtab
 	autocmd FileType *html,xml setlocal matchpairs+=<:>
 	autocmd FileType xhtml,xml let xml_use_xhtml=1
-	autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4
+	autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 textwidth=0
 	autocmd FileType lua setlocal expandtab shiftwidth=2 tabstop=2
 	autocmd FileType rst setlocal expandtab tabstop=2 shiftwidth=2
 	autocmd FileType objc setlocal expandtab cinoptions+=(0
