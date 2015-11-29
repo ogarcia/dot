@@ -40,7 +40,7 @@ _ansible_complete_host() {
     fi
     # if inventory_file points to a directory, search recursively
     [ -d "$inventory_file" ] && grep_opts="$grep_opts -hR"
-    local hosts=$(ansible ${inventory_file:+-i "$inventory_file"} all --list-hosts 2>&1 \
+    local hosts=$(eval ansible ${inventory_file:+-i "$inventory_file"} all --list-hosts 2>&1 \
         && [ -e "$inventory_file" ] \
         && [ -d "$inventory_file" -o ! -x "$inventory_file" ] \
         && grep $grep_opts '\[.*\]' "$inventory_file" | tr -d [] | cut -d: -f1)
@@ -97,14 +97,11 @@ _ansible_get_module_path() { # @todo @see _ansible_get_inventory_file
 # Compute completion for the generics options
 _ansible_complete_options() {
     local current_word=$1
-    local options="-h --help -v --verbose -f --forks -i --inventory-file
-    -k --ask-pass --private-key -K --ask-sudo-pass
-    --ask-su-pass --ask-vault-pass --vault-password-file
-    --list-hosts -M --module-path -l --limit -T --timeout
-    -o --one-line -t --tree -s --sudo -U --sudo-user -u
-    --user -S --su -R --su-user -c --connection -P
-    --poll -B --background -C --check -a --args -m
-    --module-name"
+    local options=$(             \
+        ansible --help         | \
+        sed '1,/Options/d'     | \
+        grep -Eoie "--?[a-z-]+"   \
+    )
 
     COMPREPLY=( $( compgen -W "$options" -- "$current_word" ) )
 }
