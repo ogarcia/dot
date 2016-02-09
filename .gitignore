@@ -9,6 +9,7 @@ gnupg/.\#*
 vim/.netrwhist
 
 # Local files
+bash/local_auto.d/*
 zsh/local_auto.d/*
 
 # Cache files

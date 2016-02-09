@@ -4,10 +4,8 @@
 [ -f /etc/bash_completion ] && \
 	. /etc/bash_completion
 
-if [ -d ~/.bash_completion.d/ ]; then
-	for mod in $(ls -c1 ~/.bash_completion.d/) ; do
-		. ~/.bash_completion.d/$mod
-	done
-fi
+for in_comp in "${completion_dir}/"*.bash; do
+  [ "${in_comp}" != "${completion_dir}/*.bash" ] && mute source "${in_comp}"
+done
 
 # -- end -- vim:ft=sh:
