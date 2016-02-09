@@ -7,3 +7,9 @@ gnupg/.\#*
 
 # Vim stuff
 vim/.netrwhist
+
+# Local files
+zsh/local_auto.d/*
+
+# Cache files
+zsh/cache/*

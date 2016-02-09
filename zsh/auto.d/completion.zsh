@@ -27,7 +27,7 @@ zstyle ':completion:*:cd:*' noignore-parents noparent pwd
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' list-prompt "%BMatch %m (%p)%b"
-zstyle ':completion:*' menu yes select=8 interactive # More than 8 possible options give an interactive menu
+zstyle ':completion:*' menu select interactive
 zstyle ':completion:*:processes' command 'ps -au${USERNAME} -o pid,user,args'
 zstyle ':completion:*:processes-names' command 'ps -au${USERNAME} -o command'
 zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?.o' '*?.c~' '*?.old' '*?.pro'
