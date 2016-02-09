@@ -48,6 +48,7 @@ done
 
 # Free all *in*ternal variables at this moment. It's postcondition. At
 # this point none variable must be used by zsh_auto
+for in_var in $(typeset +m options_*) $(typeset +m in_*); do unset ${in_var}; done
 unset OS FROM src local_src
 
 # -- end --
