@@ -41,8 +41,6 @@ alias -- ll="ls ${options_ls} -l"
 alias -- grep="grep ${options_grep}"
 
 # Fish-like syntax highlighting if available.
-# WARNING: This script may take away the prompt if you press CTRL+C in
-# autocompletion. Not is a big problem, but if happens, this is the culprit.
 if [ -r /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
   source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi

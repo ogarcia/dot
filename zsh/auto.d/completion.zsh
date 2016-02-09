@@ -35,5 +35,7 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:killall:*' force-list always
 zstyle ':completion:*:kill:*' force-list always
 
+# WARNING: The menu select may take away the prompt if you press CTRL+C in
+# autocompletion. Not is a big problem, but if happens, this is the culprit.
 
 # -- end -- vim:ft=zsh:
