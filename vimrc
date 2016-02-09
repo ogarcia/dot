@@ -59,6 +59,7 @@ call neobundle#end()
 
 " Plugin: Airline
 let g:airline#extensions#tabline#enabled=1
+let g:airline_powerline_fonts=1
 
 set tabstop=2                 " Set tabstops to 2 spaces
 set smarttab                  " Use smart tabs... we are not as dumb!
