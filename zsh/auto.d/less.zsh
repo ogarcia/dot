@@ -8,7 +8,6 @@ fi
 # Set a fancy status bar un less(1) program.
 in_mprompt="    ?ltLine %lt-%lb ?pt(%pt\%).:?btByte..     [?f%f:*stdin*.] ?m(%i-%m).   "
 export LESS="-J -K -M -x4 -PM[48;5;233m[38;5;75m$in_mprompt[0;0m"
-unset in_mprompt
 
 # SuSE doesn't support "raw" control characters.
 { [ -e "/etc/SuSE-release" ] && export LESS="-R $LESS"; } || export LESS="-r $LESS"
@@ -32,6 +31,6 @@ export LESS_TERMCAP_ue=$'\e[0;0m'
 
 # By default use less(1) in raw mode (allow color codes
 # and more).
-alias less='less -R'
+alias -- less='less -R'
 
 # -- end -- vim:ft=sh:

@@ -5,7 +5,10 @@ colors
 
 # Set terminal type.
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-  export TERM='xterm-256color'
+  case "${TERM}" in
+    screen*) export TERM='screen-256color' ;;
+    *) export TERM='xterm-256color' ;;
+  esac
 else
   export TERM='xterm-color'
 fi
@@ -29,11 +32,17 @@ else
   setopt list_types
 fi
 
+options_grep="${options_grep} --color=auto"
+options_ls="${options_ls} --color=auto"
+
 # Set color aliases.
-alias -- ls='ls --color=auto'
-alias -- grep='grep --color=auto'
+alias -- ls="ls ${options_ls}"
+alias -- ll="ls ${options_ls} -l"
+alias -- grep="grep ${options_grep}"
 
 # Fish-like syntax highlighting if available.
+# WARNING: This script may take away the prompt if you press CTRL+C in
+# autocompletion. Not is a big problem, but if happens, this is the culprit.
 if [ -r /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
   source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
