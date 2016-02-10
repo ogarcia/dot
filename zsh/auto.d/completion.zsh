@@ -12,7 +12,8 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # Format completion description and warnings.
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
-zstyle ':completion:*:warnings' format '%BNo matching %b%d'
+# Commented by segfault (http://www.zsh.org/mla/workers/2016/msg00472.html)
+# zstyle ':completion:*:warnings' format '%BNo matching %b%d'
 
 # Avoid annoying username completion.
 zstyle ':completion:*:complete:(cd|pushd|pd):*' tag-order \
