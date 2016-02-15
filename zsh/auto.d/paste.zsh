@@ -6,12 +6,12 @@ if ! installed curl || ! installed awk; then
 fi
 
 nnpaste () {
-  curl -X POST -s -d '<-' https://pastein.connectical.com/documents | \
+  curl -s --data-binary '@-' https://pastein.connectical.com/documents | \
     awk -F '"' '{print "https://pastein.connectical.com/"$4}'
 }
 
 haste () {
-  curl -X POST -s -d '<-' http://hastebin.com/documents | \
+  curl -s --data-binary '@-' http://hastebin.com/documents | \
     awk -F '"' '{print "http://hastebin.com/"$4}'
 }
 
