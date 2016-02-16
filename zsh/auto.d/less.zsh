@@ -33,4 +33,4 @@ export LESS_TERMCAP_ue=$'\e[0;0m'
 # and more).
 alias -- less='less -R'
 
-# -- end -- vim:ft=sh:
+# -- end -- vim:ft=zsh:
