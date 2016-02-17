@@ -12,8 +12,7 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # Format completion description and warnings.
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
-# Commented by segfault (http://www.zsh.org/mla/workers/2016/msg00472.html)
-# zstyle ':completion:*:warnings' format '%BNo matching %b%d'
+zstyle ':completion:*:warnings' format '%BNo matching %b%d'
 
 # Avoid annoying username completion.
 zstyle ':completion:*:complete:(cd|pushd|pd):*' tag-order \
@@ -28,7 +27,9 @@ zstyle ':completion:*:cd:*' noignore-parents noparent pwd
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' list-prompt "%BMatch %m (%p)%b"
-zstyle ':completion:*' menu select interactive
+zstyle ':completion:*' menu select
+# Removed interactive by segfault (http://www.zsh.org/mla/workers/2016/msg00472.html)
+# zstyle ':completion:*' menu select interactive
 zstyle ':completion:*:processes' command 'ps -au${USERNAME} -o pid,user,args'
 zstyle ':completion:*:processes-names' command 'ps -au${USERNAME} -o command'
 zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?.o' '*?.c~' '*?.old' '*?.pro'
