@@ -6,6 +6,8 @@ if ! installed curl
 fi
 
 alias -- ipecho='curl ipecho.net/plain; echo'
+alias -- wtmad='curl -s wttr.in/Madrid'
+alias -- wtcor='curl -s wttr.in/A_Coruna'
 
 pagestats () {
   if [ $# -lt 1 ]
