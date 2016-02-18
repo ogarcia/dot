@@ -7,7 +7,7 @@ fi
 
 alias -- ipecho='curl ipecho.net/plain; echo'
 
-meteo () { curl -s "http://wttr.in/${1}" }
+meteo () { curl -s "meteo.connectical.com/${1}" }
 
 pagestats () {
   if [ $# -lt 1 ]
