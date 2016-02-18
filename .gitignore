@@ -14,3 +14,6 @@ zsh/local_auto.d/*
 
 # Cache files
 zsh/cache/*
+
+# Zgen files
+zsh/zgen/*
