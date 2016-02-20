@@ -10,6 +10,12 @@ if [[ -r ~/.zsh/zgen/zgen.zsh ]]; then
     zgen load aperezdc/virtualz
     zgen save
   fi
+else
+  zgen-install () {
+    { [[ -d ~/.zsh ]] || mkdir ~/.zsh; } && \
+      git clone git://github.com/tarjoilija/zgen ~/.zsh/zgen && \
+      exec "${SHELL}" -l
+  }
 fi
 
 # -- end -- vim:ft=zsh:
