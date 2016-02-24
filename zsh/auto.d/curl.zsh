@@ -7,6 +7,8 @@ fi
 
 alias -- ipecho='curl ipecho.net/plain; echo'
 
+ipinfo () { curl -s "ipinfo.io/${1}" && echo }
+
 meteo () { curl -s "meteo.connectical.com/${1}" }
 
 pagestats () {
