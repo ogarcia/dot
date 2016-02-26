@@ -22,6 +22,7 @@ filetype indent plugin on
 set nocompatible              " Only VIM mode
 set tabstop=2                 " Set tabstops to 2 spaces
 set smarttab                  " Use smart tabs... we are not as dumb!
+set expandtab                 " Always uses spaces instead of tab characters
 set shiftwidth=2              " Set indentation shift-width to 2 spaces
 set autoindent                " Enable automatic indentation
 set copyindent                " Enable automatic indentation of pasted lines
