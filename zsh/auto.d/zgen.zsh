@@ -3,6 +3,7 @@
 
 if [[ -r ~/.zsh/zgen/zgen.zsh ]]; then
   ZGEN_DIR=~/.zsh/zgen
+  VIRTUALZ_HOME=~/.local/virtualenvs
   source ~/.zsh/zgen/zgen.zsh
   if ! zgen saved; then
     zgen load zsh-users/zsh-completions src
