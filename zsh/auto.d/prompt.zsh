@@ -1,5 +1,6 @@
 # This file is sourced by .zshrc. This script configures zsh prompt.
 
+VIRTUAL_ENV_DISABLE_PROMPT=1 # Disable virtualenv prompt change on activate
 FMT_BRANCH="%{$fg[cyan]%}%b%u%c%{$fg[default]%}" # e.g. master¹²
 FMT_ACTION="·%{$fg[green]%}%a%{$fg[default]%}"   # e.g. (rebase)
 
