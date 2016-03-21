@@ -14,7 +14,9 @@
 
 # **If you want to specified some personal options, see
 # ``.bash-auto.d`` directory**
-auto_dir=${BASH_AUTODIR:-~/.bash_auto.d}
+auto_dir=${BASH_AUTODIR:-~/.bash/auto.d}
+local_auto_dir=${BASH_LOCALAUTODIR:-~/.bash/local_auto.d}
+completion_dir=${BASH_COMPLETIONDIR:-~/.bash/completion.d}
 
 # This bash_auto only works with bash >= 3.0
 [ "${BASH_VERSION:-0}" '<' "3" ] && return 1
@@ -25,10 +27,6 @@ auto_dir=${BASH_AUTODIR:-~/.bash_auto.d}
 # Define some usefull functions
 mute () { "$@" 2>/dev/null >/dev/null; }
 installed () { type -p "$1" 2>&1 > /dev/null; }
-declared () {
-	declare -p "$1" >/dev/null 2>/dev/null ||
-	declare -f "$1" >/dev/null 2>/dev/null;
-}
 
 # Clean ``prompt`` variable. This is a precondition to prompt file
 # in bash_auto.d if exists.
@@ -37,9 +35,6 @@ prompt=
 # Set special variables to autoload plugins. This variables must not be
 # exported.
 OS="$(uname)"
-LINUX="$(cat /etc/*-{release,version} 2>/dev/null)"
-HOST="${HOSTNAME}"
-USER="${LOGNAME}"
 FROM="${SSH_CLIENT%% *}"
 
 shopt -s extglob
@@ -52,10 +47,15 @@ export PS1="[no prompt]$ "
 # The ``for`` is muted (redirected to ``/dev/null``) to prevent
 # unusefull errors if directory does not exists. I consider ugly
 # practice to save this messages.
-for src in ${auto_dir}/*.bash; do mute source $src; done
+for src in "${auto_dir}/"*.bash; do
+  [ "${src}" != "${auto_dir}/*.bash" ] && mute source "${src}"
+done
+for local_src in "${local_auto_dir}/"*.bash; do
+  [ "${local_src}" != "${local_auto_dir}/*.bash" ] && mute source "${local_src}"
+done
 
 # Free all *in*ternal variables at this moment. It's postcondition. At
 # this point none variable must be used by bash_auto
-unset OS LINUX HOST USER FROM src ${!in_*} ${!options_*}
+unset OS FROM src ${!in_*} ${!options_*}
 
 # -- end --

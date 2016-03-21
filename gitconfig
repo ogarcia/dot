@@ -66,3 +66,7 @@
 [user]
 	name = Óscar García Amor
 	email = ogarcia@connectical.com
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
