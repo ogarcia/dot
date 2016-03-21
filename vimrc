@@ -14,8 +14,9 @@
 " Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
-let g:user  = "Óscar García Amor"
-let g:email = "ogarcia@connectical.com"
+let g:user    = "Óscar García Amor"
+let g:email   = "ogarcia@connectical.com"
+let g:license = "GNU GPLv3"
 
 if has("vim_starting")
 	set nocompatible
@@ -29,33 +30,40 @@ map <S-W> <Plug>CamelCaseMotion_w
 map <S-B> <Plug>CamelCaseMotion_b
 map <S-E> <Plug>CamelCaseMotion_e
 
-" Plugin: NeoBundle
+let s:plug_path = has('nvim')
+    \ ? '~/.config/nvim/autoload/plug.vim'
+    \ : '~/.vim/autoload/plug.vim'
+let s:plug_bundle_path = has('nvim')
+    \ ? '~/.config/nvim/bundle'
+    \ : '~/.vim/bundle'
+
+" Plugin: Plug. A minimalist Vim plugin manager.
 " This is the base bundle plugin and must be installed to work
-if !isdirectory(expand('~/.vim/bundle/neobundle.vim'))
-	if executable ('git')
-		echo 'Installing NeoBundle ... '
-		silent exe '!git clone https://github.com/Shougo/neobundle.vim'
-			\ . ' ~/.vim/bundle/neobundle.vim'
-	else
-		echo 'Must install git before use this vimrc file'
-		finish
-	endif
+if empty(glob(s:plug_path))
+    execute 'silent !curl -sfLo ' . s:plug_path . ' --create-dirs ' .
+        \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    execute 'source ' . s:plug_path
+    if has(':PlugInstall')
+        PlugInstall
+    else
+        echom 'Plug installed. Please close, re-open Vim and run :PlugInstall'
+        finish
+    endif
 endif
 
-" Load plugins with NeoBundle
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'    " Next generation Vim package manager
-NeoBundle 'aperezdc/vim-template'        " Set of templates for certain file types
-NeoBundle 'bling/vim-airline'            " Superpowers for status/tabline
-NeoBundle 'airblade/vim-gitgutter'       " Shows a git diff in the gutter (sign column)
-NeoBundle 'tpope/vim-fugitive'           " The best git wrapper of all time
-NeoBundle 'bkad/CamelCaseMotion',
-	\ {'name' : 'vim-camelcasemotion'}   " Provide CamelCase motion through words
-NeoBundle 'Shougo/unite.vim',
-	\ {'name' : 'vim-unite'}             " Search and display information from arbitrary sources
-NeoBundle 'godlygeek/tabular',
-	\ {'name' : 'vim-tabular'}           " Text filtering and alignment
-call neobundle#end()
+" Load plugins with Plug
+call plug#begin(s:plug_bundle_path)
+Plug 'aperezdc/vim-template'  " Set of templates for certain file types
+Plug 'bling/vim-airline'      " Superpowers for status/tabline
+Plug 'airblade/vim-gitgutter' " Shows a git diff in the gutter (sign column)
+Plug 'tpope/vim-fugitive'     " The best git wrapper of all time
+Plug 'bkad/CamelCaseMotion'   " Provide CamelCase motion through words
+Plug 'Shougo/unite.vim'       " Search and display information from arbitrary sources
+Plug 'godlygeek/tabular'      " Text filtering and alignment
+call plug#end()
+
+unlet s:plug_path
+unlet s:plug_bundle_path
 
 " Plugin: Airline
 let g:airline#extensions#tabline#enabled=1
@@ -326,7 +334,5 @@ map  <F8>   :cn!<CR>
 " F12 -> Save all and exit
 map  <F12>  :xa!<CR>
 map! <F12>  <ESC>:xa!<CR>
-
-NeoBundleCheck
 
 " vim:ts=4:sw=4:fenc=utf-8
