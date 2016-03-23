@@ -20,7 +20,6 @@ let g:license = "GNU GPLv3"
 
 if has("vim_starting")
 	set nocompatible
-	set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 filetype indent plugin on
 
