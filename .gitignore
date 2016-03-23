@@ -9,11 +9,11 @@ gnupg/.\#*
 vim/.netrwhist
 
 # Local files
-bash/local_auto.d/*
-zsh/local_auto.d/*
+bash/local_auto.d/
+zsh/local_auto.d/
 
 # Cache files
-zsh/cache/*
+zsh/cache/
 
 # Zgen files
-zsh/zgen/*
+zsh/zgen/
