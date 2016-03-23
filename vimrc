@@ -18,10 +18,8 @@ let g:user    = "Óscar García Amor"
 let g:email   = "ogarcia@connectical.com"
 let g:license = "GNU GPLv3"
 
-if has("vim_starting")
-	set nocompatible
-endif
-filetype indent plugin on
+set nocompatible
+filetype plugin indent on
 
 " Plugin: CamelCaseMotion
 " This plug-in has to be configured before sourcing
@@ -108,6 +106,11 @@ set shortmess+=a
 set noshowmode
 set grepprg=ag\ --noheading\ --nocolor\ --nobreak
 set secure
+
+" Configure persistent undo
+if !isdirectory(expand('~/.vim/undo'))
+    execute 'silent !mkdir -p ~/.vim/undo'
+endif
 set undofile                  " Save undo's after file closes
 set undodir=$HOME/.vim/undo   " where to save undo histories
 set undolevels=1000           " How many undos
@@ -310,7 +313,7 @@ imap <F2>   <ESC>:w!<CR>a
 
 " F3 -> Toggle line numbers
 map  <F3>   :set nu!<CR>
-imap <F3>   <ESC>:set nu!<CR>i
+imap <F3>   <ESC>:set nu!<CR>a
 
 " F4 -> Open unite with file and buffer
 function <SID>OpenUniteFileBuffer()
@@ -329,6 +332,10 @@ map  <F5>   :wall!<CR>:make<CR>
 map  <F6>   :cl!<CR>
 map  <F7>   :cp!<CR>
 map  <F8>   :cn!<CR>
+
+" F10 -> Hide/Show Gitgutter
+map  <F10>   :GitGutterSignsToggle<CR>
+imap <F10>   <ESC>:GitGutterSignsToggle<CR>a
 
 " F12 -> Save all and exit
 map  <F12>  :xa!<CR>
