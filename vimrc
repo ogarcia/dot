@@ -14,8 +14,9 @@
 " Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
-let g:user  = "Óscar García Amor"
-let g:email = "ogarcia@connectical.com"
+let g:user    = "Óscar García Amor"
+let g:email   = "ogarcia@connectical.com"
+let g:license = "GNU GPLv3"
 
 if has("vim_starting")
 	set nocompatible
@@ -29,37 +30,48 @@ map <S-W> <Plug>CamelCaseMotion_w
 map <S-B> <Plug>CamelCaseMotion_b
 map <S-E> <Plug>CamelCaseMotion_e
 
-" Plugin: NeoBundle
+let s:plug_path = has('nvim')
+    \ ? '~/.config/nvim/autoload/plug.vim'
+    \ : '~/.vim/autoload/plug.vim'
+let s:plug_bundle_path = has('nvim')
+    \ ? '~/.config/nvim/bundle'
+    \ : '~/.vim/bundle'
+
+" Plugin: Plug. A minimalist Vim plugin manager.
 " This is the base bundle plugin and must be installed to work
-if !isdirectory(expand('~/.vim/bundle/neobundle.vim'))
-	if executable ('git')
-		echo 'Installing NeoBundle ... '
-		silent exe '!git clone https://github.com/Shougo/neobundle.vim'
-			\ . ' ~/.vim/bundle/neobundle.vim'
-	else
-		echo 'Must install git before use this vimrc file'
-		finish
-	endif
+if empty(glob(s:plug_path))
+    execute 'silent !curl -sfLo ' . s:plug_path . ' --create-dirs ' .
+        \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    execute 'source ' . s:plug_path
+    if has(':PlugInstall')
+        PlugInstall
+    else
+        echom 'Plug installed. Please close, re-open Vim and run :PlugInstall'
+        finish
+    endif
 endif
 
-" Load plugins with NeoBundle
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'aperezdc/vim-template'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'bkad/CamelCaseMotion',
-	\ {'name' : 'vim-camelcasemotion'}
-NeoBundle 'Shougo/unite.vim',
-	\ {'name' : 'vim-unite'}
-call neobundle#end()
+" Load plugins with Plug
+call plug#begin(s:plug_bundle_path)
+Plug 'aperezdc/vim-template'  " Set of templates for certain file types
+Plug 'bling/vim-airline'      " Superpowers for status/tabline
+Plug 'airblade/vim-gitgutter' " Shows a git diff in the gutter (sign column)
+Plug 'tpope/vim-fugitive'     " The best git wrapper of all time
+Plug 'bkad/CamelCaseMotion'   " Provide CamelCase motion through words
+Plug 'Shougo/unite.vim'       " Search and display information from arbitrary sources
+Plug 'godlygeek/tabular'      " Text filtering and alignment
+call plug#end()
+
+unlet s:plug_path
+unlet s:plug_bundle_path
 
 " Plugin: Airline
 let g:airline#extensions#tabline#enabled=1
+let g:airline_powerline_fonts=0
 
 set tabstop=2                 " Set tabstops to 2 spaces
 set smarttab                  " Use smart tabs... we are not as dumb!
+set expandtab                 " Always uses spaces instead of tab characters
 set shiftwidth=2              " Set indentation shift-width to 2 spaces
 set autoindent                " Enable automatic indentation
 set copyindent                " Enable automatic indentation of pasted lines
@@ -136,7 +148,7 @@ if has("autocmd")
 	autocmd FileType javascript setlocal expandtab
 	autocmd FileType *html,xml setlocal matchpairs+=<:>
 	autocmd FileType xhtml,xml let xml_use_xhtml=1
-	autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4
+	autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 textwidth=0
 	autocmd FileType lua setlocal expandtab shiftwidth=2 tabstop=2
 	autocmd FileType rst setlocal expandtab tabstop=2 shiftwidth=2
 	autocmd FileType objc setlocal expandtab cinoptions+=(0
@@ -322,7 +334,5 @@ map  <F8>   :cn!<CR>
 " F12 -> Save all and exit
 map  <F12>  :xa!<CR>
 map! <F12>  <ESC>:xa!<CR>
-
-NeoBundleCheck
 
 " vim:ts=4:sw=4:fenc=utf-8
