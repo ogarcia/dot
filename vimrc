@@ -341,4 +341,13 @@ imap <F10>   <ESC>:GitGutterSignsToggle<CR>a
 map  <F12>  :xa!<CR>
 map! <F12>  <ESC>:xa!<CR>
 
+" Append local config if file exists
+let s:local_config = has('nvim')
+    \ ? '~/.config/nvim/local.vim'
+    \ : '~/.vimrc.local'
+
+if filereadable(glob(s:local_config))
+    execute 'source ' . s:local_config
+endif
+
 " vim:ts=4:sw=4:fenc=utf-8
