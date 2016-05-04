@@ -24,16 +24,18 @@ zstyle ':completion:*:cd:*' ignored-patterns '(*/)#CVS'
 zstyle ':completion:*:cd:*' noignore-parents noparent pwd
 
 # Some completion fine-tuning.
+zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' list-prompt "%BMatch %m (%p)%b"
 zstyle ':completion:*' menu select
 # Removed interactive by segfault (http://www.zsh.org/mla/workers/2016/msg00472.html)
 # zstyle ':completion:*' menu select interactive
+
+# Improved processes list on kill completion
 zstyle ':completion:*:processes' command 'ps -au${USERNAME} -o pid,user,args'
 zstyle ':completion:*:processes-names' command 'ps -au${USERNAME} -o command'
-zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?.o' '*?.c~' '*?.old' '*?.pro'
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 zstyle ':completion:*:killall:*' force-list always
 zstyle ':completion:*:kill:*' force-list always
 
