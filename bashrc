@@ -15,6 +15,7 @@
 # **If you want to specified some personal options, see
 # ``.bash/auto.d`` directory**
 auto_dir=${BASH_AUTODIR:-~/.bash/auto.d}
+private_auto_dir=${BASH_PRIVATEAUTODIR:-~/.bash/private_auto.d}
 local_auto_dir=${BASH_LOCALAUTODIR:-~/.bash/local_auto.d}
 completion_dir=${BASH_COMPLETIONDIR:-~/.bash/completion.d}
 
@@ -46,6 +47,9 @@ export PS1="[no prompt]$ "
 # Load auto_dir and local_auto_dir contents.
 for src in "${auto_dir}/"*.bash; do
   [ "${src}" != "${auto_dir}/*.bash" ] && mute source "${src}"
+done
+for private_src in "${private_auto_dir}/"*.bash; do
+  [ "${private_src}" != "${private_auto_dir}/*.bash" ] && mute source "${private_src}"
 done
 for local_src in "${local_auto_dir}/"*.bash; do
   [ "${local_src}" != "${local_auto_dir}/*.bash" ] && mute source "${local_src}"

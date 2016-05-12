@@ -15,6 +15,7 @@
 # **If you want to specified some personal options, see
 # ``.zsh/auto.d`` directory**
 auto_dir=${ZSH_AUTODIR:-~/.zsh/auto.d}
+private_auto_dir=${ZSH_PRIVATEAUTODIR:-~/.zsh/private_auto.d}
 local_auto_dir=${ZSH_LOCALAUTODIR:-~/.zsh/local_auto.d}
 
 # Define some usefull functions
@@ -38,9 +39,12 @@ PROMPT=$'<%n@%m> [%~]%# '
 # Export possible PATH modifications.
 export PATH
 
-# Load auto_dir and local_auto_dir contents.
+# Load auto_dir, private_auto_dir and local_auto_dir contents.
 for src in "${auto_dir}/"*.zsh; do
   [ "${src}" != "${auto_dir}/*.zsh" ] && mute source "${src}"
+done
+for private_src in "${private_auto_dir}/"*.zsh; do
+  [ "${private_src}" != "${private_auto_dir}/*.zsh" ] && mute source "${private_src}"
 done
 for local_src in "${local_auto_dir}/"*.zsh; do
   [ "${local_src}" != "${local_auto_dir}/*.zsh" ] && mute source "${local_src}"
@@ -49,6 +53,6 @@ done
 # Free all *in*ternal variables at this moment. It's postcondition. At
 # this point none variable must be used by zsh_auto
 for in_var in $(typeset +m options_*) $(typeset +m in_*); do unset ${in_var}; done
-unset OS FROM src local_src in_var
+unset OS FROM src private_src local_src in_var
 
 # -- end --

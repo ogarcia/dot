@@ -8,6 +8,10 @@ gnupg/.\#*
 # Vim stuff
 vim/.netrwhist
 
+# Private files
+bash/private_auto.d/
+zsh/private_auto.d/
+
 # Local files
 bash/local_auto.d/
 zsh/local_auto.d/
