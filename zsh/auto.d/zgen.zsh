@@ -4,7 +4,8 @@
 if [[ -r ~/.zsh/zgen/zgen.zsh ]]; then
   ZGEN_DIR=~/.zsh/zgen
   ZGEN_AUTOLOAD_COMPINIT=1
-  ZGEN_CUSTOM_COMPDUMP=${ZGEN_DIR}/zcompdump
+  [[ ! -d ~/.zsh/zcompdump ]] && mkdir -p ~/.zsh/zcompdump
+  ZGEN_CUSTOM_COMPDUMP=~/.zsh/zcompdump/zgenzcompdump
   VIRTUALZ_HOME=~/.local/virtualenvs
   source ~/.zsh/zgen/zgen.zsh
   if ! zgen saved; then
