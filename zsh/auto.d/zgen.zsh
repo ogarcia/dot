@@ -17,7 +17,7 @@ if [[ -r ~/.zsh/zgen/zgen.zsh ]]; then
 else
   zgen-install () {
     { [[ -d ~/.zsh ]] || mkdir ~/.zsh; } && \
-      git clone --depth=1 git://github.com/tarjoilija/zgen ~/.zsh/zgen && \
+      git clone --depth=1 git://github.com/ogarcia/zgen ~/.zsh/zgen && \
       exec "${SHELL}" -l
   }
 fi
