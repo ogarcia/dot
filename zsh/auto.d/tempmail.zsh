@@ -6,7 +6,7 @@ if ! installed curl
 fi
 
 tempmail () {
-  if rand_name=$(curl -f -s -m 1 http://maildrop.cc/api/suggestion); then
+  if rand_name=$(curl -f -s -m 1 https://maildrop.cc/api/suggestion); then
     rand_name=$(echo ${rand_name} | cut -f 4 -d '"')
   else
     [ -c /dev/ramdom ] && dev_rand="/dev/ramdom"
@@ -16,7 +16,7 @@ tempmail () {
     rand_name=$(<${dev_rand} tr -dc A-Za-z | head -c 8)
   fi
   echo "Your temp mail is ${rand_name}@maildrop.cc"
-  echo "Can access to inbox in http://maildrop.cc/inbox/${rand_name}"
+  echo "Can access to inbox in https://maildrop.cc/inbox/${rand_name}"
 }
 
 alias -- 'tm'=tempmail
