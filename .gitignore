@@ -15,5 +15,8 @@ zsh/local_auto.d/
 # Cache files
 zsh/cache/
 
+# Zsh compdump files
+zsh/zcompdump/
+
 # Zgen files
 zsh/zgen/
