@@ -3,7 +3,8 @@
 
 zstyle :compinstall filename "${HOME}/.zshrc"
 autoload -Uz compinit
-compinit
+[[ ! -d ~/.zsh/zcompdump ]] && mkdir -p ~/.zsh/zcompdump
+compinit -d ~/.zsh/zcompdump/zcompdump
 
 # Use completion cache.
 [[ ! -d ~/.zsh/cache ]] && mkdir -p ~/.zsh/cache
