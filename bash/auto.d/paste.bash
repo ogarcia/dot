@@ -5,16 +5,17 @@ if ! installed curl || ! installed awk; then
 	return 0
 fi
 
-nnpaste () {
-	a=$(cat)
-	curl -X POST -s -d "$a" https://pastein.connectical.com/documents | \
-	  awk -F '"' '{print "https://pastein.connectical.com/"$4}'
+lesma () {
+  curl -F 'lesma=<-' https://paste.connectical.com
 }
 
 haste () {
-	a=$(cat)
-	curl -X POST -s -d "$a" http://hastebin.com/documents | \
-	  awk -F '"' '{print "http://hastebin.com/"$4}'
+  curl -s --data-binary '@-' https://hastebin.com/documents | \
+    awk -F '"' '{print "https://hastebin.com/"$4}'
+}
+
+sprunge () {
+  curl -F 'sprunge=<-' http://sprunge.us
 }
 
 # -- end -- vim:ft=sh:
