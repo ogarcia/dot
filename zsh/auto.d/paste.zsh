@@ -6,6 +6,10 @@ if ! installed curl || ! installed awk; then
 fi
 
 lesma () {
+  curl -F 'lesma=<-' https://lesma.eu
+}
+
+nnlesma () {
   curl -F 'lesma=<-' https://paste.connectical.com
 }
 
