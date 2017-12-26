@@ -1,72 +1,75 @@
 [alias]
-	co   = commit -a
-	a    = add
-	di   = diff
-	dic  = diff --cached
-	pl   = pull
-	ps   = push
-	plre = pull --rebase
-	st   = status
-	out  = log origin..HEAD
-	rlog = reflog
-	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	redo = commit --amend
+  co   = commit -a
+  ch   = checkout
+  a    = add
+  di   = diff
+  dic  = diff --cached
+  pl   = pull
+  ps   = push
+  plre = pull --rebase
+  st   = status
+  out  = log origin..HEAD
+  rlog = reflog
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  redo = commit --amend
 
 [color]
-	ui = auto
+  ui = auto
 
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+  current = yellow reverse
+  local = yellow
+  remote = green
 
 [color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old  = red bold
-	new  = green bold
-	whitespace = red reverse
+  meta = yellow bold
+  frag = magenta bold
+  old  = red bold
+  new  = green bold
+  whitespace = red reverse
 
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+  added = yellow
+  changed = green
+  untracked = cyan
 
 [core]
-	excludesfile = ~/.gitignore
-	whitespace = fix, -indent-with-non-tab,trailing-space,cr-at-eol
-	autocrlf = input
+  excludesfile = ~/.gitignore
+  whitespace = fix, -indent-with-non-tab,trailing-space,cr-at-eol
+  autocrlf = input
 
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  required = true
+  process = git-lfs filter-process
 
 [filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
 
 [merge]
-	tool = vimdiff
+  tool = vimdiff
 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
 
 [push]
-	default = simple
+  default = simple
 
 [sendemail]
-	smtpencryption = tls
-	smtpserver = smtp.gmail.com
-	smtpuser = ogarcia@connectical.com
-	smtpserverport = 587
-	chainreplyto = false
+  smtpencryption = tls
+  smtpserver = smtp.gmail.com
+  smtpuser = ogarcia@connectical.com
+  smtpserverport = 587
+  chainreplyto = false
 
 [user]
-	name = Óscar García Amor
-	email = ogarcia@connectical.com
-[filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+  name = Óscar García Amor
+  email = ogarcia@connectical.com
