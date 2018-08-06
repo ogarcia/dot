@@ -5,7 +5,7 @@ if ! installed curl
   then return 0
 fi
 
-ipecho () { { curl -s -m 2 api.ipify.org && echo; } || curl -s eth0.me }
+ipecho () { { curl -s -m 2 ip.connectical.com || curl -s api.ipify.org; } && echo }
 
 ipinfo () { curl -s "ipinfo.io/${1}" && echo }
 
