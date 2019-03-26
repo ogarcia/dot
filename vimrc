@@ -57,6 +57,7 @@ Plug 'tpope/vim-fugitive'     " The best git wrapper of all time
 Plug 'bkad/CamelCaseMotion'   " Provide CamelCase motion through words
 Plug 'Shougo/unite.vim'       " Search and display information from arbitrary sources
 Plug 'godlygeek/tabular'      " Text filtering and alignment
+Plug 'ajh17/VimCompletesMe'   " Tab completion plugin for Vim
 call plug#end()
 
 unlet s:plug_path
@@ -65,6 +66,10 @@ unlet s:plug_bundle_path
 " Plugin: Airline
 let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
+
+" Plugin: VimCompletesMe
+let b:vcm_tab_complete = "omni"
+set omnifunc=syntaxcomplete#Complete
 
 set tabstop=2                 " Set tabstops to 2 spaces
 set smarttab                  " Use smart tabs... we are not as dumb!
@@ -283,15 +288,6 @@ command -nargs=0 KillEolGarbage call ExecuteInPlace("%s/[ \\t\\r]\\+$//")
 command -nargs=0 EolMac2Unix    call ExecuteInPlace("%s/\\r/\\n/g")
 command -nargs=0 EolUnix2Mac    call ExecuteInPlace("%s/$/\\r/g")
 command -nargs=0 EolUnix2DOS    call ExecuteInPlace("%s/$/\\r\\n/g")
-
-" Simple autocompletion with <TAB>, uses Omni Completion if available.
-function! s:completion_check_bs()
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1] =~ '\s'
-endfunction
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" :
-			\ <SID>completion_check_bs() ? "\<TAB>" :
-			\ &omnifunc == "" ? "\<C-p>" :"\<C-x><C-o><C-p>"
 
 " Move visual block
 vnoremap J :m '>+1<CR>gv=gv
