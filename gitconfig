@@ -53,3 +53,5 @@
 [user]
   name = Óscar García Amor
   email = ogarcia@connectical.com
+[pull]
+	rebase = false
