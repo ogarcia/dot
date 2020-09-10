@@ -1,6 +1,6 @@
 " vimrc
 "
-" Copyright (c) 2006-2016  Connectical
+" Copyright (c) 2006-2020  Connectical
 "
 " Authored by Óscar García Amor <ogarcia@connectical.com>
 "
@@ -55,7 +55,6 @@ Plug 'bling/vim-airline'      " Superpowers for status/tabline
 Plug 'airblade/vim-gitgutter' " Shows a git diff in the gutter (sign column)
 Plug 'tpope/vim-fugitive'     " The best git wrapper of all time
 Plug 'bkad/CamelCaseMotion'   " Provide CamelCase motion through words
-Plug 'Shougo/unite.vim'       " Search and display information from arbitrary sources
 Plug 'godlygeek/tabular'      " Text filtering and alignment
 Plug 'ajh17/VimCompletesMe'   " Tab completion plugin for Vim
 call plug#end()
@@ -125,117 +124,117 @@ set undoreload=10000          " number of lines to save for undo
 "set exrc
 
 if has("mouse")
-	if has("mouse_sgr")
-		set ttymouse=sgr
-	endif
+    if has("mouse_sgr")
+        set ttymouse=sgr
+    endif
 endif
 
 if has("linebreak")
-	set linebreak          " Break on `breakat' chars when linewrapping is on.
-	set showbreak=+        " Prepend `+' to wrapped lines
+    set linebreak          " Break on `breakat' chars when linewrapping is on.
+    set showbreak=+        " Prepend `+' to wrapped lines
 endif
 
 if has("folding")
-	set foldminlines=5     " Don't fold stuff with less lines
-	set foldmethod=syntax  " Use syntax-aware folding
-	set nofoldenable       " Don't enable folding by default
-	map , zj
-	map - za
-	map _ zA
+    set foldminlines=5     " Don't fold stuff with less lines
+    set foldmethod=syntax  " Use syntax-aware folding
+    set nofoldenable       " Don't enable folding by default
+    map , zj
+    map - za
+    map _ zA
 endif
 
 if has("wildmenu")
-	set wildmenu           " Show completions on menu over cmdline
-	set wildchar=<TAB>     " Navigate wildmenu with tabs
-	set wildignore=*.o,*.cm[ioax],*.ppu,*.core,*~,core,#*#
+    set wildmenu           " Show completions on menu over cmdline
+    set wildchar=<TAB>     " Navigate wildmenu with tabs
+    set wildignore=*.o,*.cm[ioax],*.ppu,*.core,*~,core,#*#
 endif
 
 if has("autocmd")
-	" Tune defaults for some particular file types.
-	autocmd FileType javascript setlocal expandtab
-	autocmd FileType *html,xml setlocal matchpairs+=<:>
-	autocmd FileType xhtml,xml let xml_use_xhtml=1
-	autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 textwidth=0
-	autocmd FileType lua setlocal expandtab shiftwidth=2 tabstop=2
-	autocmd FileType rst setlocal expandtab tabstop=2 shiftwidth=2
-	autocmd FileType objc setlocal expandtab cinoptions+=(0
-	autocmd FileType cpp setlocal expandtab cinoptions+=(0
-	autocmd FileType c setlocal expandtab cinoptions+=(0
-	autocmd FileType d setlocal expandtab cinoptions+=(0
+    " Tune defaults for some particular file types.
+    autocmd FileType javascript setlocal expandtab
+    autocmd FileType *html,xml setlocal matchpairs+=<:>
+    autocmd FileType xhtml,xml let xml_use_xhtml=1
+    autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 textwidth=0
+    autocmd FileType lua setlocal expandtab shiftwidth=2 tabstop=2
+    autocmd FileType rst setlocal expandtab tabstop=2 shiftwidth=2
+    autocmd FileType objc setlocal expandtab cinoptions+=(0
+    autocmd FileType cpp setlocal expandtab cinoptions+=(0
+    autocmd FileType c setlocal expandtab cinoptions+=(0
+    autocmd FileType d setlocal expandtab cinoptions+=(0
 
-	" Jump to the last edited position in the file being loaded (if available)
-	" in the ~/.viminfo file, I really love this =)
-	autocmd BufReadPost *
-				\ if line("'\"") > 0 && line("'\"") <= line("$") |
-				\		execute "normal g'\"" |
-				\ endif
+    " Jump to the last edited position in the file being loaded (if available)
+    " in the ~/.viminfo file, I really love this =)
+    autocmd BufReadPost *
+                \ if line("'\"") > 0 && line("'\"") <= line("$") |
+                \		execute "normal g'\"" |
+                \ endif
 
-	" Set PO mode for POT gettext templates, too.
-	autocmd BufEnter *.pot
-				\ setf po | setlocal fenc=utf8
+    " Set PO mode for POT gettext templates, too.
+    autocmd BufEnter *.pot setf po | setlocal fenc=utf8
 
-	" Set Python mode for Twisted Application Configuration (.tac) fiels.
-	autocmd BufReadPost,BufNewFile *.tac setf python
+    " Set Python mode for Twisted Application Configuration (.tac) fiels.
+    autocmd BufReadPost,BufNewFile *.tac setf python
 
-	" Add the `a' format option (autoreflow) to plain text files.
-	autocmd BufReadPost,BufNewFile *.txt,*README*,*TODO*,*HACKING*,*[Rr]eadme*,*[Tt]odo*
-				\ setlocal expandtab
+    " Add the `a' format option (autoreflow) to plain text files.
+    autocmd BufReadPost,BufNewFile *.txt,*README*,*TODO*,*HACKING*,*[Rr]eadme*,*[Tt]odo*
+                \ setlocal expandtab
 
-	" System headers usually are designed to be viewed with 8-space tabs
-	autocmd BufReadPost /usr/include/* setlocal ts=8 sw=8
+    " System headers usually are designed to be viewed with 8-space tabs
+    autocmd BufReadPost /usr/include/* setlocal ts=8 sw=8
 
-	" Tup build system
-	autocmd BufNewFile,BufRead Tupfile,*.tup setf tup
+    " Tup build system
+    autocmd BufNewFile,BufRead Tupfile,*.tup setf tup
 
-	" Use Enter key to navigate help links.
-	autocmd FileType help nmap <buffer> <Return> <C-]>
+    " Use Enter key to navigate help links.
+    autocmd FileType help nmap <buffer> <Return> <C-]>
 endif
 
 " When under xterm and compatible terminals, use titles if available and
 " change cursor color depending on active mode.
 if &term =~ "xterm" || &term =~ "screen" || &term =~ "tmux"
-	if has("title")
-		set title
-	endif
+    if has("title")
+        set title
+    endif
 endif
 
 " Some fixups for Screen, which has those messed up in most versions
 if &term =~ "screen"
-	map  <silent> [1;5D <C-Left>
-	map  <silent> [1;5C <C-Right>
-	lmap <silent> [1;5D <C-Left>
-	lmap <silent> [1;5C <C-Right>
-	imap <silent> [1;5D <C-Left>
-	imap <silent> [1;5C <C-Right>
+    map  <silent> [1;5D <C-Left>
+    map  <silent> [1;5C <C-Right>
+    lmap <silent> [1;5D <C-Left>
+    lmap <silent> [1;5C <C-Right>
+    imap <silent> [1;5D <C-Left>
+    imap <silent> [1;5C <C-Right>
 endif
 
 if has("syntax") || has("gui_running")
-	syntax on
-	if has("gui_running")
-		colorscheme twilight
-		set guifont=PragmataPro\ 12
-		set guifontwide=VL\ Gothic
-	else
-		if &term =~ "-256color" || $COLORTERM =~ "gnome-terminal"
-			set t_Co=256
-		endif
-		colorscheme elflord
-	endif
-	" Match whitespace at end of lines (which is usually a mistake),
-	" but only while not in insert mode, to avoid matches popping in
-	" and out while typing.
-	highlight WhitespaceEOL ctermbg=red guibg=red
-	if has("autocmd")
-		augroup WhitespaceEOL
-			autocmd!
-			autocmd InsertEnter * syn clear WhitespaceEOL | syn match WhitespaceEOL excludenl /\s\+\%#\@!$/
-			autocmd InsertLeave * syn clear WhitespaceEOL | syn match WhitespaceEOL excludenl /\s\+$/
-		augroup END
-	else
-		match WhitespaceEOL /\s\+$/
-	endif
-	" Remove background color to SignColumn used by gitgutter
-	highlight clear SignColumn
+    syntax on
+    " Define a highlight group that will match trailing whitespace
+    if has("autocmd")
+        autocmd ColorScheme * highlight ExtraWhitespaceEOL ctermbg=red guibg=red
+    else
+        highlight ExtraWhitespaceEOL ctermbg=red guibg=red
+    endif
+    if has("gui_running")
+        colorscheme twilight
+        set guifont=PragmataPro\ 12
+        set guifontwide=VL\ Gothic
+    else
+        colorscheme elflord
+        if &term =~ "-256color" || $COLORTERM =~ "gnome-terminal"
+            set t_Co=256
+        endif
+    endif
+    " Match whitespace at end of lines (which is usually a mistake),
+    " but only while not in insert mode, to avoid matches popping in
+    " and out while typing.
+    match ExtraWhitespaceEOL /\s\+$/
+    if has("autocmd")
+        autocmd InsertEnter * match ExtraWhitespaceEOL /\s\+\%#\@<!$/
+        autocmd InsertLeave * match ExtraWhitespaceEOL /\s\+$/
+    endif
+    " Remove background color to SignColumn used by gitgutter
+    highlight clear SignColumn
 endif
 
 " Let Vim be picky about syntax, so we are reported of glitches visually.
@@ -252,10 +251,10 @@ let g:sql_type_default   = 'mysql'
 " Set up things for UTF-8 text editing by default, if multibyte
 " support was compiled in. Let Linux consoles be Latin-1.
 if has("multi_byte")
-	set encoding=utf-8
-	if $TERM == "linux" || $TERM_PROGRAM == "GLterm"
-		set termencoding=latin1
-	endif
+    set encoding=utf-8
+    if $TERM == "linux" || $TERM_PROGRAM == "GLterm"
+        set termencoding=latin1
+    endif
 endif
 
 " Autocorrect some usually-mispelled commands
@@ -267,18 +266,18 @@ command! -nargs=0 -bang Wq wq<bang>
 " and sets the cursor in the saved position, so the user thinks cursor
 " was not moved at all during an operation.
 function ExecuteInPlace(expr)
-	let l:linePos = line(".")
-	let l:colPos = col(".")
-	execute a:expr
-	call cursor(l:linePos, l:colPos)
+    let l:linePos = line(".")
+    let l:colPos = col(".")
+    execute a:expr
+    call cursor(l:linePos, l:colPos)
 endfunction
 
 " Checks wether a given path is readable and sources it as a Vim script.
 " Very useful to load scripts only when available.
 function <SID>SourceIfAvailable(path)
-	if filereadable(expand(a:path))
-		execute "source " . expand(a:path)
-	endif
+    if filereadable(expand(a:path))
+        execute "source " . expand(a:path)
+    endif
 endfunction
 
 " Some commands used to thrash trailing garbage in lines.
@@ -311,14 +310,9 @@ imap <F2>   <ESC>:w!<CR>a
 map  <F3>   :set nu!<CR>
 imap <F3>   <ESC>:set nu!<CR>a
 
-" F4 -> Open unite with file and buffer
-function <SID>OpenUniteFileBuffer()
-	if (bufname("%") != "[unite] - default")
-		Unite file buffer
-	endif
-endfunction
-map  <F4>   :call <SID>OpenUniteFileBuffer()<CR>
-imap <F4>   <ESC>:call <SID>OpenUniteFileBuffer()<CR>
+" F4 -> Open Explore
+map  <F4>   :Explore<CR>
+imap <F4>   <ESC>:Explore<CR>
 
 " F5 -> Compile/build
 " F6 -> Show build errors
@@ -339,8 +333,8 @@ map! <F12>  <ESC>:xa!<CR>
 
 " Append local config if file exists
 let s:local_config = has('nvim')
-    \ ? '~/.config/nvim/local.vim'
-    \ : '~/.vimrc.local'
+            \ ? '~/.config/nvim/local.vim'
+            \ : '~/.vimrc.local'
 
 if filereadable(glob(s:local_config))
     execute 'source ' . s:local_config
