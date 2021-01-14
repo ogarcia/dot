@@ -57,6 +57,8 @@ Plug 'tpope/vim-fugitive'     " The best git wrapper of all time
 Plug 'bkad/CamelCaseMotion'   " Provide CamelCase motion through words
 Plug 'godlygeek/tabular'      " Text filtering and alignment
 Plug 'ajh17/VimCompletesMe'   " Tab completion plugin for Vim
+Plug 'stephpy/vim-yaml'       " Better syntax for YAML
+Plug 'towolf/vim-helm'        " Syntax for helm templates
 call plug#end()
 
 unlet s:plug_path
