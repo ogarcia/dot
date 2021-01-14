@@ -1,6 +1,6 @@
 " vimrc
 "
-" Copyright (c) 2006-2020  Connectical
+" Copyright (c) 2006-2021  Connectical
 "
 " Authored by Óscar García Amor <ogarcia@connectical.com>
 "

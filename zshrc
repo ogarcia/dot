@@ -1,6 +1,6 @@
 # zsh_auto
 # ---------
-# Copyright (c) 2016  Connectical
+# Copyright (c) 2016-2021  Connectical
 # Óscar García Amor, Andrés J. Díaz, Adrián Pérez de Castro
 #
 # This file is sourced by all *interactive* zsh shells on startup,
