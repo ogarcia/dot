@@ -15,17 +15,13 @@ zstyle ':vcs_info:*:prompt:*' formats       "${FMT_BRANCH} "
 zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
 
 case ${TERM} in
-  screen | xterm* | vte* | gnome-terminal)
+  screen | xterm* | gnome-terminal)
     function precmd {
       vcs_info 'prompt'
       print -Pn "\e]0;%n@%m: %~\a"
       [[ ${TERM} = screen* ]] && echo -ne "\ek$(hostname):${PWD##*/}\e\\"
     }
     function preexec () { print -Pn "\e]0;$1\a" }
-    function _vte_osc7 () {
-      printf "\033]7;file://%s%s\033\\" "${HOSTNAME}" "$(/usr/lib/vte-urlencode-cwd)"
-    }
-    precmd_functions+=(_vte_osc7)
   ;;
   *)
     function precmd { vcs_info 'prompt' }
