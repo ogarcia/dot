@@ -1,15 +1,29 @@
 # This file is sourced by .zshrc. This script loads zsh completion
 # functionality.
 
+_zsh_compinit_dir="${ZSH_COMPINIT_DIR:-${HOME}/.zsh/zcompdump}"
+_zsh_compdump_file="${ZSH_CUSTOM_COMPDUMP:-${_zsh_compinit_dir}/zcompdump.${HOST}}"
+_zsh_cache_dir="${ZSH_CACHE_DIR:-${HOME}/.zsh/cache}"
+
+_zsh_completion_dirs_check () {
+  [ ! -d "${_zsh_compinit_dir}" ] && mkdir -p "${_zsh_compinit_dir}"
+  [ ! -d "${_zsh_cache_dir}" ] && mkdir -p "${_zsh_cache_dir}"
+}
+
+zsh-completion-clean () {
+  rm -rf "${_zsh_compinit_dir}" "${_zsh_cache_dir}"
+  _zsh_completion_dirs_check
+  compinit -d "${_zsh_compdump_file}"
+}
+
+_zsh_completion_dirs_check
 zstyle :compinstall filename "${HOME}/.zshrc"
 autoload -Uz compinit
-[[ ! -d ~/.zsh/zcompdump ]] && mkdir -p ~/.zsh/zcompdump
-compinit -d ~/.zsh/zcompdump/zcompdump
+compinit -d "${_zsh_compdump_file}"
 
 # Use completion cache.
-[[ ! -d ~/.zsh/cache ]] && mkdir -p ~/.zsh/cache
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle ':completion:*' cache-path "${_zsh_cache_dir}"
 
 # Format completion description and warnings.
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
