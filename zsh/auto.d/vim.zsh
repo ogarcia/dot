@@ -7,12 +7,4 @@ fi
 
 export EDITOR="$(which vim)"
 
-if installed vimpager
-then
-	MANPAGER="vimmanpager"
-	PAGER="$(which vimpager)"
-	export MANPAGER
-	export PAGER
-fi
-
 # -- end -- vim:ft=zsh:
