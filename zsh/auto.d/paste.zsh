@@ -22,4 +22,13 @@ sprunge () {
   curl -F 'sprunge=<-' http://sprunge.us
 }
 
+0x0-file () {
+  curl -F 'file=@-' http://0x0.st
+}
+
+0x0-url () {
+  [ ! ${1} ] && echo "Missing URL parameter" && return 1
+  curl -F "url=${1}" http://0x0.st
+}
+
 # -- end -- vim:ft=zsh:

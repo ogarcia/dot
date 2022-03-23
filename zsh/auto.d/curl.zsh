@@ -9,7 +9,7 @@ ipecho () { { curl -s -m 2 ip.connectical.com || curl -s api.ipify.org; } && ech
 
 ipinfo () { curl -s "ipinfo.io/${1}" && echo }
 
-meteo () { curl -s "meteo.connectical.com/${1}" }
+meteo () { curl -s "wttr.in/${1}" | egrep -v -e 'igor_chubin' }
 
 pagestats () {
   if [ $# -lt 1 ]
