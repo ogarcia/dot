@@ -10,7 +10,8 @@
   st   = status
   out  = log origin..HEAD
   rlog = reflog
-  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  lola = log --all --decorate --graph --oneline
+  rola = log --all --decorate --graph --oneline --reflog
   redo = commit --amend
 
 [color]
