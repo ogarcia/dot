@@ -50,6 +50,7 @@ endif
 
 " Load plugins with Plug
 call plug#begin(s:plug_bundle_path)
+Plug 'aperezdc/vim-elrond'    " Elrond colorscheme
 Plug 'aperezdc/vim-template'  " Set of templates for certain file types
 Plug 'bling/vim-airline'      " Superpowers for status/tabline
 Plug 'airblade/vim-gitgutter' " Shows a git diff in the gutter (sign column)
@@ -222,9 +223,12 @@ if has("syntax") || has("gui_running")
         set guifont=PragmataPro\ 12
         set guifontwide=VL\ Gothic
     else
-        colorscheme elflord
+        colorscheme koehler
         if &term =~ "-256color" || $COLORTERM =~ "gnome-terminal"
             set t_Co=256
+            let g:airline_theme='dark'
+            let g:elrond#cursorline=0
+            colorscheme elrond
         endif
     endif
     " Match whitespace at end of lines (which is usually a mistake),
