@@ -2,8 +2,11 @@
 # use with docker(1).
 
 if ! installed docker
-	then return 0
+  then return 0
 fi
+
+# Follow XDG Base Directory specification
+export DOCKER_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}"/docker
 
 # Clean the docker house
 dclean () {
