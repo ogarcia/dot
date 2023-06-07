@@ -20,7 +20,19 @@ drm () {
   [[ "$state" == "false" ]] && docker rm ${1}
 }
 
+# Run a docker with sh and current dir as datadir
+dsh () {
+  docker run -t -i -v ${PWD}:/data --rm --entrypoint /bin/sh ${@}
+}
+
+# Run a docker with bash and current dir as datadir
+dbash () {
+  docker run -t -i -v ${PWD}:/data --rm --entrypoint /bin/bash ${@}
+}
+
 # Some fancy aliases
 alias -- dps="docker ps -a"
+alias -- dalpine="dsh alpine:latest"
+alias -- darch="dbash ogarcia/archlinux:devel"
 
 # -- end -- vim:ft=zsh:
