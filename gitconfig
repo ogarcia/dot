@@ -40,6 +40,7 @@
 [core]
   excludefile = ~/.gitignore
   whitespace = fix, -indent-with-non-tab,trailing-space,cr-at-eol
+  quotepath = false
 
 [init]
   defaultBranch = master
