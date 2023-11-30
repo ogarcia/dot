@@ -50,16 +50,16 @@ endif
 
 " Load plugins with Plug
 call plug#begin(s:plug_bundle_path)
-Plug 'aperezdc/vim-elrond'    " Elrond colorscheme
-Plug 'aperezdc/vim-template'  " Set of templates for certain file types
-Plug 'bling/vim-airline'      " Superpowers for status/tabline
-Plug 'airblade/vim-gitgutter' " Shows a git diff in the gutter (sign column)
-Plug 'tpope/vim-fugitive'     " The best git wrapper of all time
-Plug 'bkad/CamelCaseMotion'   " Provide CamelCase motion through words
-Plug 'godlygeek/tabular'      " Text filtering and alignment
-Plug 'ajh17/VimCompletesMe'   " Tab completion plugin for Vim
-Plug 'stephpy/vim-yaml'       " Better syntax for YAML
-Plug 'towolf/vim-helm'        " Syntax for helm templates
+Plug 'https://github.com/aperezdc/vim-elrond'          " Elrond colorscheme
+Plug 'https://github.com/aperezdc/vim-template'        " Set of templates for certain file types
+Plug 'https://github.com/bling/vim-airline'            " Superpowers for status/tabline
+Plug 'https://github.com/airblade/vim-gitgutter'       " Shows a git diff in the gutter (sign column)
+Plug 'https://github.com/tpope/vim-fugitive'           " The best git wrapper of all time
+Plug 'https://github.com/bkad/CamelCaseMotion'         " Provide CamelCase motion through words
+Plug 'https://github.com/godlygeek/tabular'            " Text filtering and alignment
+Plug 'https://git.sr.ht/~ackyshake/VimCompletesMe.vim' " Tab completion plugin for Vim
+Plug 'https://github.com/stephpy/vim-yaml'             " Better syntax for YAML
+Plug 'https://github.com/towolf/vim-helm'              " Syntax for helm templates
 call plug#end()
 
 unlet s:plug_path
