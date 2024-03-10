@@ -7,6 +7,9 @@ if ! installed ssh
   then return 0
 fi
 
+# Use GCR ssh-agent
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gcr/ssh"
+
 # Tool to remove offending ssh key
 remove-ssh-known-host () {
   [ ! ${1} ] && echo "Missing parameter '<file>:<line>'" && return 1

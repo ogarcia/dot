@@ -5,8 +5,10 @@ if ! installed python; then
 	return 0
 fi
 
-if [ -r "${HOME}/.pythonrc.py" ] ; then
-	export PYTHONSTARTUP="${HOME}/.pythonrc.py"
+if [ -r "${XDG_CONFIG_HOME:-${HOME}/.config}/python/pythonrc.py" ] ; then
+	export PYTHONSTARTUP="${XDG_CONFIG_HOME:-${HOME}/.config}/python/pythonrc.py"
 fi
+
+export PYTHON_HISTORY="${XDG_STATE_HOME:-${HOME}/.local/state}/python_history"
 
 # -- end -- vim:ft=zsh:

@@ -31,4 +31,9 @@ sprunge () {
   curl -F "url=${1}" http://0x0.st
 }
 
+transfer() {
+  [ ! ${1} ] && echo "Missing file parameter" && return 1
+  curl --progress-bar --upload-file "${1}" "https://transfer.sh/${1##*/}" | tee /dev/null && echo
+}
+
 # -- end -- vim:ft=zsh:
