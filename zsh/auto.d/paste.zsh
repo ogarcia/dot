@@ -1,8 +1,8 @@
 # This file is sourced by .zshrc. This script configures several online
 # paste commands of pastebin style.
 
-if ! installed curl || ! installed awk; then
-  return 0
+if ! installed curl
+  then return 0
 fi
 
 lesma () {
@@ -11,11 +11,6 @@ lesma () {
 
 nnlesma () {
   curl -F 'lesma=<-' https://paste.connectical.com
-}
-
-haste () {
-  curl -s --data-binary '@-' https://hastebin.com/documents | \
-    awk -F '"' '{print "https://hastebin.com/"$4}'
 }
 
 sprunge () {

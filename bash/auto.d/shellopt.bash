@@ -10,6 +10,8 @@ HISTCONTROL="ignoreboth"
 HISTSIZE="1000"
 HISTTIMEFORMAT="%F %T "
 
-export HISTFILE"${XDG_STATE_HOME:-${HOME}/.local/state}/bash_history"
+[ ! -d "${XDG_STATE_HOME:-${HOME}/.local/state}" && \
+  mkdir -p "${XDG_STATE_HOME:-${HOME}/.local/state}"
+export HISTFILE="${XDG_STATE_HOME:-${HOME}/.local/state}/bash_history"
 
 # -- end -- vim:ft=sh:

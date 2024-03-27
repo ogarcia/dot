@@ -2,7 +2,7 @@
 # use with Rust.
 
 if ! installed cargo
-	then return 0
+  then return 0
 fi
 
 [ ! -d ~/.local/cargo ] && mkdir -p ~/.local/cargo

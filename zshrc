@@ -1,6 +1,6 @@
 # zsh_auto
 # ---------
-# Copyright (c) 2016-2021  Connectical
+# Copyright (c) 2016-2024  Connectical
 # Óscar García Amor, Andrés J. Díaz, Adrián Pérez de Castro
 #
 # This file is sourced by all *interactive* zsh shells on startup,
@@ -17,6 +17,12 @@
 auto_dir=${ZSH_AUTODIR:-~/.zsh/auto.d}
 private_auto_dir=${ZSH_PRIVATEAUTODIR:-~/.zsh/private_auto.d}
 local_auto_dir=${ZSH_LOCALAUTODIR:-~/.zsh/local_auto.d}
+
+# Be XDG Base Directory Specification friendly
+zsh_cache_dir=${ZSH_CACHE_DIR:-${XDG_CACHE_HOME:-~/.cache}/zsh}
+[ ! -d ${zsh_cache_dir} ] && mkdir -p ${zsh_cache_dir}
+[ ! -d ${XDG_STATE_HOME:-~/.local/state} ] && \
+  mkdir -p ${XDG_STATE_HOME:-~/.local/state}
 
 # Define some usefull functions
 mute () { { "$@" } 2>/dev/null >/dev/null; }

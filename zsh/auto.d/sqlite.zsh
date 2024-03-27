@@ -5,6 +5,6 @@ if ! installed sqlite3; then
 	return 0
 fi
 
-export SQLITE_HISTORY="${XDG_STATE_HOME:-${HOME}/.local/state}/sqlite_history"
+export SQLITE_HISTORY="${XDG_STATE_HOME:-${HOME}/.local/state}"/sqlite_history
 
 # -- end -- vim:ft=zsh:
