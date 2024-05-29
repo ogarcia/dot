@@ -15,7 +15,7 @@ _pshell () {
 
 # Some fancy aliases
 alias -- psh="_pshell /bin/sh"
-alias -- psh="_pshell /bin/bash"
+alias -- pbash="_pshell /bin/bash"
 alias -- palpine="_pshell /bin/sh docker.io/alpine:latest"
 alias -- parch="_pshell /bin/bash docker.io/ogarcia/archlinux:devel"
 
