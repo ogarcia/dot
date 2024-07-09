@@ -10,7 +10,7 @@ HISTCONTROL="ignoreboth"
 HISTSIZE="1000"
 HISTTIMEFORMAT="%F %T "
 
-[ ! -d "${XDG_STATE_HOME:-${HOME}/.local/state}" && \
+[ ! -d "${XDG_STATE_HOME:-${HOME}/.local/state}" ] && \
   mkdir -p "${XDG_STATE_HOME:-${HOME}/.local/state}"
 export HISTFILE="${XDG_STATE_HOME:-${HOME}/.local/state}/bash_history"
 
