@@ -1,7 +1,7 @@
 # This file is sourced by .bashrc. This script configures the PATH variable.
 
-if [ -d "${HOME}/.local/bin" ] ; then
-  PATH="${PATH}:${HOME}/.local/bin"
+if [ -d "${XDG_BIN_HOME:-${HOME}/.local/bin}" ] ; then
+  PATH="${PATH}:${XDG_BIN_HOME:-${HOME}/.local/bin}"
 fi
 
 for _path in \
