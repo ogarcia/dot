@@ -5,7 +5,12 @@ if ! installed curl
   then return 0
 fi
 
-ipecho () { { curl -s -m 2 ip.connectical.com || curl -s api.ipify.org; } && echo }
+ipecho () {
+  [[ ${1} =~ ^-[46]+$ ]] && _prot=${1#-}
+  { curl -${_prot:-4} -s -m 2 ip.connectical.com || \
+    curl -${_prot:-4} -s api64.ipify.org; } && echo
+  unset _prot
+}
 
 ipinfo () { curl -s "ipinfo.io/${1}" && echo }
 
