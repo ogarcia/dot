@@ -229,6 +229,9 @@ if has("syntax") || has("gui_running")
             let g:airline_theme='dark'
             let g:elrond#cursorline=0
             colorscheme elrond
+            " Disables termguicolors to prevent colors from darkening when
+            " using terminals that support it
+            set notgc
         endif
     endif
     " Match whitespace at end of lines (which is usually a mistake),
