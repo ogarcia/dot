@@ -86,7 +86,7 @@ set ruler                     " Show line number & column
 set laststatus=2              " Always show a status line
 set sidescrolloff=2           " Keep some context when scrolling
 set scrolloff=6               " The same in vertical :)
-set viminfo+=n~/.viminfo      " Name of the viminfo file
+set viminfo+=n~/.vim/viminfo  " Name of the viminfo file
 set whichwrap+=[,],<,>        " Allow arrow keys to wrap lines
 set nowrap                    " Don't wrap long lines
 set showmode                  " Print the current mode in the last line
